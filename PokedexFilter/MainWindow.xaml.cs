@@ -45,6 +45,7 @@ namespace PokedexFilter
             //pongo los pkm :D
             PideRom();
             cmbPokemons.SelectedIndex = 0;
+            gPokemonPrincipal.Espalda = false;
         }
 
         private void PideRom()

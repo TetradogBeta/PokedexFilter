@@ -98,7 +98,7 @@ namespace PokedexFilter
             {
                 this.Pokemon = pokemon;
                 this.Espalda = espalda;
-            }
+            }else { this.espalda = true; }
            
         }
         public Pokemon Pokemon
