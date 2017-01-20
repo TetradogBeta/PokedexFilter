@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokedexFilter", "PokedexFilter\PokedexFilter.csproj", "{7C703F84-5F8E-469B-9254-E20FD9C5CAD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonGBAFrameWork", "..\..\..\..\Programas\PokemonGBAFrameWork\PokemonGBAFrameWork\PokemonGBAFrameWork.csproj", "{42256C23-1E9B-41E5-A5DA-D3C6AF6B824D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7C703F84-5F8E-469B-9254-E20FD9C5CAD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C703F84-5F8E-469B-9254-E20FD9C5CAD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C703F84-5F8E-469B-9254-E20FD9C5CAD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42256C23-1E9B-41E5-A5DA-D3C6AF6B824D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42256C23-1E9B-41E5-A5DA-D3C6AF6B824D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42256C23-1E9B-41E5-A5DA-D3C6AF6B824D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42256C23-1E9B-41E5-A5DA-D3C6AF6B824D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

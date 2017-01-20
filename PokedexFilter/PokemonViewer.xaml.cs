@@ -24,7 +24,7 @@ namespace PokedexFilter
     /// </summary>
     public partial class PokemonViewer : UserControl
     {
-        static SortedList<string, System.Windows.Media.Color> colorTipo;
+        public  static  SortedList<string, System.Windows.Media.Color> ColorTipo;
 
         Pokemon pokemon;
         bool espalda;
@@ -34,69 +34,71 @@ namespace PokedexFilter
         
         static PokemonViewer()
         {
-            colorTipo = new SortedList<string, System.Windows.Media.Color>();
+            ColorTipo = new SortedList<string, System.Windows.Media.Color>();
 
-            colorTipo.Add("ACERO", Colors.Gray);
-            colorTipo.Add("STEEL", Colors.Gray);
+            ColorTipo.Add("ACERO", Colors.Gray);
+            ColorTipo.Add("STEEL", Colors.Gray);
 
-            colorTipo.Add("AGUA", Colors.Blue);
-            colorTipo.Add("WATER", Colors.Blue);
+            ColorTipo.Add("AGUA", Colors.Blue);
+            ColorTipo.Add("WATER", Colors.Blue);
 
-            colorTipo.Add("BICHO", Colors.YellowGreen);
-            colorTipo.Add("BUG", Colors.YellowGreen);
+            ColorTipo.Add("BICHO", Colors.YellowGreen);
+            ColorTipo.Add("BUG", Colors.YellowGreen);
 
-            colorTipo.Add("DRAGÓN", Colors.MediumPurple);
-            colorTipo.Add("DRAGON", Colors.MediumPurple);
+            ColorTipo.Add("DRAGÓN", Colors.MediumPurple);
+            ColorTipo.Add("DRAGON", Colors.MediumPurple);
 
-            colorTipo.Add("ELÉCT.", Colors.Gold);
-            colorTipo.Add("ELECTR", Colors.Gold);
+            ColorTipo.Add("ELÉCT.", Colors.Gold);
+            ColorTipo.Add("ELECTR", Colors.Gold);
 
-            colorTipo.Add("FANT.", Colors.Purple);
-            colorTipo.Add("GHOST", Colors.Purple);
+            ColorTipo.Add("FANT.", Colors.Purple);
+            ColorTipo.Add("GHOST", Colors.Purple);
 
-            colorTipo.Add("FUEGO", Colors.OrangeRed);
-            colorTipo.Add("FIRE", Colors.OrangeRed);
+            ColorTipo.Add("FUEGO", Colors.OrangeRed);
+            ColorTipo.Add("FIRE", Colors.OrangeRed);
 
-            colorTipo.Add("HIELO", Colors.AliceBlue);
-            colorTipo.Add("ICE", Colors.AliceBlue);
+            ColorTipo.Add("HIELO", Colors.AliceBlue);
+            ColorTipo.Add("ICE", Colors.AliceBlue);
 
-            colorTipo.Add("LUCHA", Colors.DarkRed);
-            colorTipo.Add("FIGHT", Colors.DarkRed);
+            ColorTipo.Add("LUCHA", Colors.DarkRed);
+            ColorTipo.Add("FIGHT", Colors.DarkRed);
 
-            colorTipo.Add("NORMAL", Colors.LightGray);
-            colorTipo.Add("NORMAL", Colors.LightGray);
+            ColorTipo.Add("NORMAL", Colors.LightGray);
 
-            colorTipo.Add("PLANTA", Colors.LightGreen);
-            colorTipo.Add("GRASS", Colors.LightGreen);
+            ColorTipo.Add("PLANTA", Colors.LightGreen);
+            ColorTipo.Add("GRASS", Colors.LightGreen);
 
-            colorTipo.Add("PSÍQ.", Colors.LightPink);
-            colorTipo.Add("PSYCHC", Colors.LightPink);
+            ColorTipo.Add("PSÍQ.", Colors.LightPink);
+            ColorTipo.Add("PSYCHC", Colors.LightPink);
 
-            colorTipo.Add("ROCA", Colors.SaddleBrown);
-            colorTipo.Add("ROCK", Colors.SaddleBrown);
+            ColorTipo.Add("ROCA", Colors.SaddleBrown);
+            ColorTipo.Add("ROCK", Colors.SaddleBrown);
 
-            colorTipo.Add("SINIE.", Colors.Brown);
-            colorTipo.Add("DARK", Colors.Brown);
+            ColorTipo.Add("SINIE.", Colors.Brown);
+            ColorTipo.Add("DARK", Colors.Brown);
 
-            colorTipo.Add("TIERRA", Colors.SandyBrown);
-            colorTipo.Add("GROUND", Colors.SandyBrown);
+            ColorTipo.Add("TIERRA", Colors.SandyBrown);
+            ColorTipo.Add("GROUND", Colors.SandyBrown);
 
-            colorTipo.Add("VENENO", Colors.Pink);
-            colorTipo.Add("POISON", Colors.Pink);
+            ColorTipo.Add("VENENO", Colors.Pink);
+            ColorTipo.Add("POISON", Colors.Pink);
 
-            colorTipo.Add("VOLAD.", Colors.SteelBlue);
-            colorTipo.Add("FLYING", Colors.SteelBlue);
+            ColorTipo.Add("VOLAD.", Colors.SteelBlue);
+            ColorTipo.Add("FLYING", Colors.SteelBlue);
 
-            colorTipo.Add("(?)", Colors.White);
-            colorTipo.Add("???", Colors.White);
+            ColorTipo.Add("(?)", Colors.White);
+            ColorTipo.Add("???", Colors.White);
         }
+        public PokemonViewer() : this(null) { }
         public PokemonViewer(Pokemon pokemon, bool espalda=true)
         {
-  
             Animando = false;
             InitializeComponent();
-            this.Pokemon = pokemon;
-            this.Espalda = espalda;
+            if (pokemon != null)
+            {
+                this.Pokemon = pokemon;
+                this.Espalda = espalda;
+            }
            
         }
         public Pokemon Pokemon
@@ -108,44 +110,55 @@ namespace PokedexFilter
 
             set
             {
-                if (value == null)
-                    throw new ArgumentNullException();
                 pokemon = value;
-                PonImagen();
-                try
+                if (pokemon != null)
                 {
-                    gsColor1.Color = colorTipo[MainWindow.RomActual.Tipos[pokemon.Tipo1].Nombre.ToString().ToUpper()];
-                }
-                catch { gsColor1.Color = Colors.White; }
-                try
-                {
-                    gsColor2.Color = colorTipo[MainWindow.RomActual.Tipos[pokemon.Tipo2].Nombre.ToString().ToUpper()];
-                }
-                catch { gsColor2.Color = Colors.Black; }
+                    txtNombre.Text = "#" + pokemon.OrdenPokedexNacional + " " + pokemon.Nombre;
+                    PonImagen();
 
+                    try
+                    {
+                        gsColor1.Color = ColorTipo[MainWindow.RomActual.Tipos[pokemon.Tipo1].Nombre.ToString().ToUpper()];
+                    }
+                    catch { gsColor1.Color = Colors.White; }
+                    try
+                    {
+                        gsColor2.Color = ColorTipo[MainWindow.RomActual.Tipos[pokemon.Tipo2].Nombre.ToString().ToUpper()];
+                    }
+                    catch { gsColor2.Color = Colors.Orange; }
+                }
                 if (bmpImgAnimated != null)
                 {
                     if(Animando)
                     bmpImgAnimated.Finsh();
                     bmpImgAnimated.FrameChanged -= PonImagenAnimacion;
                 }
-                bmpImgAnimated = pokemon.Sprites.GetAnimacionImagenFrontal();
-                bmpImgAnimated.AnimarCiclicamente = true;
-                bmpImgAnimated.FrameChanged += PonImagenAnimacion;
-                if (Animando)
-                    bmpImgAnimated.Start();
+                if(pokemon!=null)
+                if (pokemon.Sprites != null)
+                {
+                    bmpImgAnimated = pokemon.Sprites.GetAnimacionImagenFrontal();
+                    bmpImgAnimated.FrameASaltarAnimacionCiclica = 1;
+                    bmpImgAnimated.AnimarCiclicamente = true;
+                    bmpImgAnimated.FrameChanged += PonImagenAnimacion;
+                    if (Animando)
+                        bmpImgAnimated.Start();
+                }
+                
             }
         }
 
         private void PonImagen()
         {
-           if(Espalda)
+            if (pokemon != null)
             {
-                img.SetImage(pokemon.Sprites.GetImagenTrasera());
-            }
-           else
-            {
-                img.SetImage(pokemon.Sprites.GetImagenFrontal());
+                if (Espalda)
+                {
+                    img.SetImage(pokemon.Sprites.GetImagenTrasera());
+                }
+                else
+                {
+                    img.SetImage(pokemon.Sprites.GetImagenFrontal());
+                }
             }
         }
 
@@ -166,22 +179,29 @@ namespace PokedexFilter
         private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
             //se mueve :D
-            bmpImgAnimated.Start();
-            Animando = true;
+            if (bmpImgAnimated != null)
+            {
+                bmpImgAnimated.Start();
+                Animando = true;
+            }
 
         }
 
         private void Grid_MouseLeave(object sender, MouseEventArgs e)
         {
             //deja de moverse
-            bmpImgAnimated.Finsh();
-            PonImagen();
-            Animando = false;
+            if (bmpImgAnimated != null)
+            {
+                bmpImgAnimated.Finsh();
+                PonImagen();
+                Animando = false;
+            }
         }
 
         private void PonImagenAnimacion(BitmapAnimated bmpAnimated, Bitmap frameActual)
         {
-            img.SetImage(frameActual);
+            Action act=()=>img.SetImage(frameActual);
+            Dispatcher.BeginInvoke(act);
         }
     }
 }
