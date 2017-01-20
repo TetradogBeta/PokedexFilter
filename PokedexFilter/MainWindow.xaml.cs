@@ -235,13 +235,17 @@ namespace PokedexFilter
             }
             filtroActual.Sort();
             cmbPokemons.ItemsSource = filtroActual;
+            posActual = 0;
             PonPokemons();
         }
 
         private void cmbPokemons_Selected(object sender, RoutedEventArgs e)
         {
-            posActual = cmbPokemons.SelectedIndex;
-            PonPokemons();
+            if (cmbPokemons.SelectedIndex >= 0)
+            {
+                posActual = cmbPokemons.SelectedIndex;
+                PonPokemons();
+            }
         }
     }
 }
