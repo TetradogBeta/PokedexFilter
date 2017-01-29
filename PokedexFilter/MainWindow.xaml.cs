@@ -58,7 +58,7 @@ namespace PokedexFilter
             {
                 if(opnRom.ShowDialog().GetValueOrDefault())
                 {
-                    RomActual = RomData.GetRomData(new RomGBA(new System.IO.FileInfo(opnRom.FileName)));
+                    RomActual =new RomData(opnRom.FileName);
                     filtroActual =new Llista<Pokemon>(Pokemon.FiltroSinNoPokes(RomActual.Pokedex));
                     filtroActual.Sort();
                     lstTipos.Items.Clear();
